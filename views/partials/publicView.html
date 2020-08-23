@@ -1,0 +1,21 @@
+<div>
+    Address: <input type="text" ng-model="newRental.name"> <br>
+    # Bedrooms: <input type="text" ng-model="newRental.bedroomCount"> <br>
+    # Bathrooms: <input type="text" ng-model="newRental.bathroomCount"> <br>
+    Minimum Rental Amt: <input type="text" ng-model="newRental.minRent"> <br>
+    Maximum Rental Amt: <input type="text" ng-model="newRental.maxRent"> <br>
+    <button ng-click="searchRentals(newRental)">Search Rentals</button><br>
+    <hr>
+ </div>
+ <table>
+    <tr>
+        <th>Name</th>
+        <th>&nbsp;</th>
+    </tr>
+    <tr ng-repeat='rental in rentals.rentals[0]'>
+        <td>[{rental.address}]</td>
+        <td ng-show="rental.commercialID > 0"><a ng-href="#/viewCommercial?commercialID=[{rental.commercialID}]">View Commercial Rental</a></td>
+        <td ng-show="rental.residentialID > 0"><a ng-href="#/viewResidential?commercialID=residentialID=[{rental.residentialID}]">View Residential Rental</a></td>
+        <td ng-show="rental.storageID > 0"><a ng-href="#/viewStorage?storageID=[{rental.storageID}]">View Storage Rental</a></td>
+    </tr>
+</table>

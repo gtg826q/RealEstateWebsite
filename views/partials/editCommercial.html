@@ -1,0 +1,48 @@
+<div>
+
+    Address: <input type="text" ng-model="Commercial.address"><br><br>
+    City: <input type="text" ng-model="Commercial.city"><br><br>
+    State: <input type="text" ng-model="Commercial.state"><br><br>
+    Zip: <input type="text" ng-model="Commercial.zip"><br><br>
+    Monthly Rent: <input type="text" ng-model="Commercial.rentAmt"><br><br>
+
+    Please enter additional description: <br>
+        <input type="textArea" ng-model="Commercial.description"><br><br>
+
+
+    <h4>Attach Image</h4>
+  <button ngf-select="uploadFiles($files, $invalidFiles)" multiple
+          accept="image/*">
+      Select Files</button>
+  <br><br>
+  Files:
+  <ul>
+    <li ng-repeat="f in files" style="font:smaller">[{f.name}] [{f.$errorParam}]
+      <span class="progress" ng-show="f.progress >= 0">
+        <div style="width:[{f.progress}]%"  
+            ng-bind="f.progress + '%'"></div>
+      </span>
+      <img ng-show="isImage(f.name)" ngf-src="f" class="thumb">
+      <button ng-click="deleteFile($index);$files=files">Delete File</button><br>
+    </li>
+    <li ng-repeat="f in errFiles" style="font:smaller">[{f.name}] [{f.$error}] [{f.$errorParam}]
+    </li> 
+  </ul>
+  {{errorMsg}}
+
+   <br><br>
+
+  <ul>
+    <li ng-repeat="f in CommercialAttachment" style="font:smaller">
+      <img ng-show="isImage(f.filePath)" ngf-src="f.filePath" class="thumb" height="42" width="42">[{f.filePath}]
+
+      <button ng-click="deleteRentalAttachment(f, $index)">Delete Commercial Attachment</button><br>
+    </li>
+
+  </ul>
+  <br> 
+
+    <button ng-click="editRental(Commercial)">Save Commercial Listing</button><br><br><br><br>
+    <button ng-click="deleteRental(Commercial)" style="color:red">Delete Commercial Listing</button><br>
+    <hr>   
+ </div>

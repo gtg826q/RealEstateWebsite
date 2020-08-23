@@ -1,0 +1,28 @@
+<div>
+
+    Address: <input type="text" ng-model="Residential.address"><br><br>
+    City: <input type="text" ng-model="Residential.city"><br><br>
+    State: <input type="text" ng-model="Residential.state"><br><br>
+    Zip: <input type="text" ng-model="Residential.zip"><br><br>
+    Monthly Rent: <input type="text" ng-model="Residential.rentAmt"><br><br>
+
+    Description: <br>
+        <input type="textArea" ng-model="Residential.description"><br><br>
+
+
+    <h4>View Images</h4>
+
+
+   <br><br>
+
+  <ul>
+    <li ng-repeat="f in ResidentialAttachment" style="font:smaller">
+      <img ng-show="isImage(f.filePath)" ngf-src="f.filePath" class="thumb" height="42" width="42">[{f.filePath}]
+
+    </li>
+
+  </ul>
+  <br> 
+
+    <hr>   
+ </div>

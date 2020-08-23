@@ -1,0 +1,33 @@
+<div>
+    Address: <input type="text" ng-model="newStorage.address"><br><br>
+    City: <input type="text" ng-model="newStorage.city"><br><br>
+    State: <input type="text" ng-model="newStorage.state"><br><br>
+    Zip: <input type="text" ng-model="newStorage.zip"><br><br>
+    Monthly Rent: <input type="text" ng-model="newStorage.rentAmt"><br><br>
+
+    Please enter additional description: <br>
+        <input type="textArea" ng-model="newStorage.description"><br><br>
+
+    <h4>Attach Images</h4>
+  <input type="file" ngf-select="uploadFiles($files, $invalidFiles)" multiple
+          accept="image/*">
+      Select Files
+  <br><br>
+  Files:
+  <ul>
+    <li ng-repeat="f in files" style="font:smaller">[{f.name}] [{f}]
+      <span class="progress" ng-show="f.progress >= 0">
+        <div style="width:{{f.progress}}%"  
+            ng-bind="f.progress + '%'"></div>
+      </span>
+      <img ng-show="isImage(f.name)" ngf-src="f" class="thumb" height="42" width="42">
+      <button ng-click="deleteFile($index);$files=files">Delete File</button><br>
+    </li>
+    <li ng-repeat="f in errFiles" style="font:smaller">[{f.name}] [{f.$error}] [{f.$errorParam}]
+    </li> 
+  </ul>
+  {{errorMsg}}     
+
+     <button ng-click="addNewStorage(newStorage)">Add Storage Listing</button><br>
+    <hr> 
+ </div>
